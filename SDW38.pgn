@@ -1,0 +1,22 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2021.01.05"]
+[Round "?"]
+[White "SDW83"]
+[Black "2ndCSwillbillay"]
+[Result "1-0"]
+[ECO "B07"]
+[WhiteElo "1112"]
+[BlackElo "1113"]
+[TimeControl "600"]
+[EndTime "14:30:39 PST"]
+[Termination "SDW83 won by checkmate"]
+
+1. e4 e5 2. d4 d6 3. dxe5 dxe5 4. Qxd8+ Kxd8 5. Nc3 Nc6 6. Be3 Bd7 7. O-O-O g6
+8. Nf3 Nf6 9. Ng5 Ke7 10. Bc4 Be6 11. Bc5+ Ke8 12. Bxe6 fxe6 13. Bxf8 Kxf8 14.
+Nxe6+ Kf7 15. Nxc7 Rac8 16. N7b5 Ng4 17. Nd6+ Kf6 18. Nd5+ Kg5 19. Nxc8 Nxf2 20.
+Nd6 Nd4 21. Nf7+ Kg4 22. Nxh8 Nxh1 23. Rxh1 Ne2+ 24. Kd2 Nd4 25. c3 Nc6 26. h3+
+Kg3 27. Ke2 Kxg2 28. Rf1 Kxh3 29. Rf7 Nd8 30. Rxh7+ Kg4 31. Rd7 Ne6 32. Nxg6
+Nf4+ 33. Ndxf4 exf4 34. Kf2 a5 35. e5 b5 36. e6 b4 37. cxb4 axb4 38. e7 Kf5 39.
+Nh4+ Ke6 40. e8=Q+ Kf6 41. Ng2 Kf5 42. Kf3 Kf6 43. Nxf4 Kf5 44. Qf8+ Ke5 45.
+Re7+ Kd6 46. Qd8+ Kc5 47. Rc7+ Kb5 48. Qb8+ Ka4 49. Ra7# 1-0

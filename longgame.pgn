@@ -1,0 +1,63 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2021.01.05"]
+[Round "?"]
+[White "diogo13115"]
+[Black "2ndCSwillbillay"]
+[Result "1/2-1/2"]
+[ECO "C41"]
+[WhiteElo "1117"]
+[BlackElo "1121"]
+[TimeControl "600"]
+[EndTime "11:04:31 PST"]
+[Termination "Game drawn by repetition"]
+
+1. e4 {[%timestamp 12]} 1... e5 {[%timestamp 19]} 2. Nf3 {[%timestamp 11]} 2...
+d6 {[%timestamp 100]} 3. Bc4 {[%timestamp 49]} 3... h6 {[%timestamp 85]} 4. Nc3
+{[%timestamp 15]} 4... Nf6 {[%timestamp 98]} 5. d4 {[%timestamp 15]} 5... Nc6
+{[%timestamp 92]} 6. d5 {[%timestamp 20]} 6... Na5 {[%timestamp 46]} 7. b4
+{[%timestamp 128]} 7... Nxc4 {[%timestamp 35]} 8. Qd3 {[%timestamp 223]} 8...
+Nb6 {[%timestamp 149]} 9. b5 {[%timestamp 25]} 9... Bg4 {[%timestamp 76]} 10.
+Ba3 {[%timestamp 102]} 10... Bxf3 {[%timestamp 46]} 11. Qxf3 {[%timestamp 14]}
+11... a6 {[%timestamp 248]} 12. O-O-O {[%timestamp 295]} 12... axb5 {[%timestamp
+55]} 13. Nxb5 {[%timestamp 16]} 13... Be7 {[%timestamp 218]} 14. Qc3
+{[%timestamp 399]} 14... O-O {[%timestamp 287]} 15. Nxc7 {[%timestamp 515]}
+15... Ra6 {[%timestamp 198]} 16. Nxa6 {[%timestamp 130]} 16... bxa6 {[%timestamp
+54]} 17. Qd3 {[%timestamp 55]} 17... Nbd7 {[%timestamp 180]} 18. Qxa6
+{[%timestamp 52]} 18... Nxe4 {[%timestamp 41]} 19. Rhf1 {[%timestamp 401]} 19...
+Nc3 {[%timestamp 267]} 20. Rd3 {[%timestamp 205]} 20... Bg5+ {[%timestamp 327]}
+21. Kb2 {[%timestamp 113]} 21... Ne4 {[%timestamp 116]} 22. Bxd6 {[%timestamp
+768]} 22... Nxd6 {[%timestamp 74]} 23. Qxd6 {[%timestamp 16]} 23... e4
+{[%timestamp 171]} 24. Rg3 {[%timestamp 90]} 24... Bf6+ {[%timestamp 235]} 25.
+Kc1 {[%timestamp 255]} 25... Be5 {[%timestamp 107]} 26. Qa3 {[%timestamp 224]}
+26... Bxg3 {[%timestamp 40]} 27. Qxg3 {[%timestamp 3]} 27... Qg5+ {[%timestamp
+84]} 28. Qxg5 {[%timestamp 29]} 28... hxg5 {[%timestamp 21]} 29. Re1
+{[%timestamp 14]} 29... f5 {[%timestamp 25]} 30. f3 {[%timestamp 31]} 30... exf3
+{[%timestamp 24]} 31. gxf3 {[%timestamp 8]} 31... Nf6 {[%timestamp 147]} 32. c4
+{[%timestamp 51]} 32... Re8 {[%timestamp 63]} 33. Rxe8+ {[%timestamp 22]} 33...
+Nxe8 {[%timestamp 12]} 34. Kc2 {[%timestamp 3]} 34... Kf7 {[%timestamp 24]} 35.
+Kc3 {[%timestamp 4]} 35... Ke7 {[%timestamp 71]} 36. Kd4 {[%timestamp 4]} 36...
+Kd6 {[%timestamp 216]} 37. c5+ {[%timestamp 21]} 37... Kd7 {[%timestamp 103]}
+38. a4 {[%timestamp 3]} 38... Nc7 {[%timestamp 112]} 39. c6+ {[%timestamp 39]}
+39... Kd6 {[%timestamp 83]} 40. a5 {[%timestamp 24]} 40... Nb5+ {[%timestamp
+23]} 41. Kc4 {[%timestamp 39]} 41... Na3+ {[%timestamp 75]} 42. Kd4 {[%timestamp
+97]} 42... Nc2+ {[%timestamp 53]} 43. Kc4 {[%timestamp 28]} 43... Ne3+
+{[%timestamp 140]} 44. Kb5 {[%timestamp 18]} 44... Nxd5 {[%timestamp 63]} 45. a6
+{[%timestamp 54]} 45... Kc7 {[%timestamp 40]} 46. Kc5 {[%timestamp 44]} 46...
+Nc3 {[%timestamp 189]} 47. a7 {[%timestamp 20]} 47... Na4+ {[%timestamp 139]}
+48. Kb5 {[%timestamp 206]} 48... Nb6 {[%timestamp 110]} 49. h3 {[%timestamp 39]}
+49... g4 {[%timestamp 46]} 50. hxg4 {[%timestamp 17]} 50... fxg4 {[%timestamp
+14]} 51. fxg4 {[%timestamp 9]} 51... g5 {[%timestamp 39]} 52. Kc5 {[%timestamp
+58]} 52... Nd7+ {[%timestamp 109]} 53. Kb4 {[%timestamp 143]} 53... Nb6
+{[%timestamp 155]} 54. Kc5 {[%timestamp 19]} 54... Nd7+ {[%timestamp 17]} 55.
+Kb5 {[%timestamp 15]} 55... Nb6 {[%timestamp 41]} 56. Ka5 {[%timestamp 37]}
+56... Kxc6 {[%timestamp 52]} 57. a8=Q+ {[%timestamp 39]} 57... Nxa8 {[%timestamp
+17]} 58. Kb4 {[%timestamp 10]} 58... Kd5 {[%timestamp 56]} 59. Kc3 {[%timestamp
+16]} 59... Ke4 {[%timestamp 6]} 60. Kd2 {[%timestamp 4]} 60... Kf4 {[%timestamp
+28]} 61. Ke2 {[%timestamp 4]} 61... Kxg4 {[%timestamp 9]} 62. Kf2 {[%timestamp
+3]} 62... Nb6 {[%timestamp 7]} 63. Kg2 {[%timestamp 4]} 63... Nd5 {[%timestamp
+9]} 64. Kf2 {[%timestamp 7]} 64... Nf4 {[%timestamp 19]} 65. Kg1 {[%timestamp
+20]} 65... Ne2+ {[%timestamp 12]} 66. Kg2 {[%timestamp 9]} 66... Nf4+
+{[%timestamp 18]} 67. Kf2 {[%timestamp 13]} 67... Nd3+ {[%timestamp 20]} 68. Kg2
+{[%timestamp 6]} 68... Nf4+ {[%timestamp 5]} 69. Kh2 {[%timestamp 15]} 69... Nd3
+{[%timestamp 5]} 70. Kg2 {[%timestamp 17]} 70... Nf4+ {[%timestamp 12]} 1/2-1/2

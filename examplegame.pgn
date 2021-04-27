@@ -1,0 +1,18 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2021.02.19"]
+[Round "?"]
+[White "2ndCSwillbillay"]
+[Black "Aino11"]
+[Result "0-1"]
+[ECO "B21"]
+[WhiteElo "1080"]
+[BlackElo "1063"]
+[TimeControl "600"]
+[EndTime "20:20:02 PST"]
+[Termination "Aino11 won by checkmate"]
+
+1. e4 c5 2. d4 cxd4 3. Qxd4 Nc6 4. Qd1 e5 5. Nc3 Nf6 6. Bb5 Bb4 7. a3 Bxc3+ 8.
+bxc3 Nxe4 9. c4 Ne7 10. Bb2 O-O 11. Ne2 f5 12. O-O f4 13. a4 d5 14. cxd5 Nxd5
+15. Ba3 Rf7 16. Bc4 Be6 17. Qd3 Nef6 18. Rfd1 a6 19. Rab1 Rd7 20. Bb2 Rc8 21.
+Bb3 Bf7 22. Bxe5 Nb4 23. Qh3 Rxd1+ 24. Rxd1 Qxd1# 0-1

@@ -23,6 +23,7 @@ files = {
 class Piece:
     name = "generic piece"
     symbol = "generic symbol"
+    
     def __init__(self, color = "white", rank = 1, file = "a"):
         self.color = color
         self.rank = rank
@@ -46,6 +47,7 @@ class Piece:
 class King(Piece):
     name = "king"
     symbol = "K"
+    
     def __init__(self, color = "white", rank = 1, file = "a", moved = False):
         self.moved = moved
         super().__init__(color, rank, file)
@@ -58,30 +60,35 @@ class King(Piece):
 class Queen(Piece):
     name = "queen"
     symbol = "Q"
+    
     def __init__(self, color = "white", rank = 1, file = "a"):
         super().__init__(color, rank, file)
         
 class Rook(Piece):
     name = "rook"
     symbol = "R"
+    
     def __init__(self, color = "white", rank = 1, file = "a"):
         super().__init__(color, rank, file)
         
 class Bishop(Piece):
     name = "bishop"
     symbol = "B"
+    
     def __init__(self, color = "white", rank = 1, file = "a"):
         super().__init__(color, rank, file)
         
 class Knight(Piece):
     name = "knight"
     symbol = "N"
+    
     def __init__(self, color = "white", rank = 1, file = "a"):
         super().__init__(color, rank, file)
         
 class Pawn(Piece):
     name = "pawn"
     symbol = ""
+    
     def __init__(self, color = "white", rank = 1, file = "a", moved = False):
         self.moved = moved
         super().__init__(color, rank, file)
@@ -92,13 +99,7 @@ class Pawn(Piece):
         return copy
     
 class ChessGame:
-    def __init__(self):
-        self.white_pieces = []
-        self.black_pieces = []
-        
-        self.white_captured = []
-        self.black_captured = []
-        
+    def __init__(self):                
         self.board = [  [Rook("white", 1, "a"), Knight("white", 1, "b"), Bishop("white", 1, "c"), Queen("white", 1, "d"), King("white", 1, "e"), Bishop("white", 1, "f"), Knight("white", 1, "g"), Rook("white", 1, "h")],
                         [Pawn("white", 2, "a"), Pawn("white", 2, "b"), Pawn("white", 2, "c"), Pawn("white", 2, "d"), Pawn("white", 2, "e"), Pawn("white", 2, "f"), Pawn("white", 2, "g"), Pawn("white", 2, "h")],
                         [None, None, None, None, None, None, None, None],

@@ -6,8 +6,6 @@ game_data = ChessGame()
 pgn_data = PGNData("gundersen_h_faul_1928.pgn")
 chess_manager = ChessManager(game_data, pgn_data)
 
-print(pgn_data.summary)
-
 def program_loop():
     print("Game:", pgn_data.file)
     user_exit = False
@@ -43,9 +41,15 @@ def user_prompt():
     
     user_input = input(info_text)
     
-    if user_input == "n": chess_manager.next_state()
-    elif user_input == "p": chess_manager.prev_state()
-    elif user_input.isdigit(): chess_manager.change_state(int(user_input))
+    if user_input == "n": 
+        chess_manager.next_state()
+        pgn_data.next_move()
+    elif user_input == "p": 
+        chess_manager.prev_state()
+        pgn_data.prev_move()
+    elif user_input.isdigit(): 
+        chess_manager.change_state(int(user_input))
+        pgn_data.change_move(int(user_input))
     else: user_exit = True
         
     return user_exit

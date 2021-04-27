@@ -35,21 +35,18 @@ class ChessManager:
         self.states_index = 0
         
     def next_state(self):
-        self.pgn.next_move()
         if self.states_index >= len(self.states) - 1: self.states_index = self.states_index
         else: self.states_index += 1
         self.game = self.states[self.states_index]
         return self.game
     
     def prev_state(self):
-        self.pgn.prev_move()
         if self.states_index <= 0: self.states_index = self.states_index
         else: self.states_index -= 1
         self.game = self.states[self.states_index]
         return self.game
     
     def change_state(self, index):
-        self.pgn.change_move(index)
         if index >= len(self.states) - 1: self.states_index = len(self.states) - 1
         elif index <= 0: self.states_index = 0
         else: self.states_index = index
@@ -58,7 +55,6 @@ class ChessManager:
         return self.game
     
     def access_state(self, index):
-        self.pgn.access_move(index)
         if index >= len(self.states) - 1: return self.states[-1]
         elif index <= 0: return self.states[0]
         else: return self.states[index]

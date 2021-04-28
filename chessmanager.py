@@ -108,9 +108,9 @@ class ChessManager:
             self.move_piece(game, piece_orig, dest, raw)
         
     def find_piece(self, piece_name, game, color, orig, dest):
-        for rank in range(8):
-            for file in range(8):
-                piece = game.board[rank][file]
+        for rank in ranks.keys():
+            for file in files.keys():
+                piece = game.piece_at(file, rank)
                 if piece and piece.name == piece_name and piece.color == color:                                    
                     return_moves = {
                                     "pawn": self.return_pawn_moves,
@@ -147,15 +147,15 @@ class ChessManager:
         return False
     
     def move_piece(self, game, orig, dest, raw):
-        target_file = files[ (dest['file']) ]
-        target_rank = ranks[ int(dest['rank']) ]
+        target_file = dest['file']
+        target_rank = int(dest['rank'])
         
-        orig_file = files[ (orig['file']) ]
-        orig_rank = ranks[ int(orig['rank']) ]
+        orig_file = orig['file']
+        orig_rank = int(orig['rank'])
     
-        piece = game.board[orig_rank][orig_file]
-        piece.file = dest['file']
-        piece.rank = int(dest['rank'])
+        piece = game.piece_at(orig_file, orig_rank)
+        piece.file = target_file
+        piece.rank = target_rank
         
         promotion_dict = {
                             "queen": Queen(),
@@ -168,8 +168,8 @@ class ChessManager:
             promotion_type = promotion_dict[raw['promotion']]
             piece = promotion_type.deepcopy(piece.color, piece.rank, piece.file)        
     
-        game.board[orig_rank][orig_file] = None
-        game.board[target_rank][target_file] = piece
+        game.set_square(orig_file, orig_rank, None)
+        game.set_square(target_file, target_rank, piece)
         
         if piece.name == "pawn":
             piece.moved = True
@@ -182,7 +182,7 @@ class ChessManager:
         rev = list(files.keys())
     
         rank = piece_to_move.rank
-        file = files[piece_to_move.file] + 1
+        file = piece_to_move.file
         
         def limit_obeyed(modif, upper_limit, lower_limit, val):
             if (val <= lower_limit and modif < 0): return False
@@ -190,13 +190,13 @@ class ChessManager:
             else: return True
         
         rank_limit_obeyed = limit_obeyed(rank_modif, rank_limit_upper, rank_limit_lower, rank)
-        file_limit_obeyed = limit_obeyed(file_modif, file_limit_upper, file_limit_lower, file)
+        file_limit_obeyed = limit_obeyed(file_modif, file_limit_upper, file_limit_lower, convert_file_to_num(file))
         while rank_limit_obeyed and file_limit_obeyed:
-            new_rank = rank + rank_modif
-            new_file = file + file_modif
-            new_move = { 'rank': new_rank, 'file': rev[new_file - 1] }
+            rank = rank + rank_modif
+            file = file_add(file, file_modif)
+            new_move = { 'rank': rank, 'file': file }
         
-            obstruction_piece = game.board[new_rank - 1][new_file - 1]
+            obstruction_piece = game.piece_at(file, rank)
             if obstruction_piece: 
                 if obstruction_piece.color == piece_to_move.color: break
                 else:
@@ -204,11 +204,9 @@ class ChessManager:
                     break
             
             valid_moves.append(new_move)
-            rank = new_rank
-            file = new_file
             
             rank_limit_obeyed = limit_obeyed(rank_modif, rank_limit_upper, rank_limit_lower, rank)
-            file_limit_obeyed = limit_obeyed(file_modif, file_limit_upper, file_limit_lower, file)
+            file_limit_obeyed = limit_obeyed(file_modif, file_limit_upper, file_limit_lower, convert_file_to_num(file))
     
     def return_king_moves(self, game, king):
         valid_moves = []

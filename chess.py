@@ -19,6 +19,19 @@ files = {
           "g": 6,
           "h": 7
         }
+        
+def file_add(file_string, file_modif):
+    rev = list(files.keys())
+    curr_index = files[file_string]
+    new_index = curr_index + file_modif
+    return rev[new_index]
+        
+def convert_file_to_num(str_file):
+    return files[str_file] + 1
+    
+def convert_file_to_str(num_file):
+    rev = list(files.keys())
+    return rev[num_file - 1]
 
 class Piece:
     name = "generic piece"
@@ -108,22 +121,32 @@ class ChessGame:
                         [None, None, None, None, None, None, None, None],
                         [Pawn("black", 7, "a"), Pawn("black", 7, "b"), Pawn("black", 7, "c"), Pawn("black", 7, "d"), Pawn("black", 7, "e"), Pawn("black", 7, "f"), Pawn("black", 7, "g"), Pawn("black", 7, "h")],
                         [Rook("black", 8, "a"), Knight("black", 8, "b"), Bishop("black", 8, "c"), Queen("black", 8, "d"), King("black", 8, "e"), Bishop("black", 8, "f"), Knight("black", 8, "g"), Rook("black", 8, "h")], ]                 
+
+    def piece_at(self, file, rank):
+        num_rank = ranks[rank]
+        num_file = files[file]
+        return self.board[num_rank][num_file]
+    
+    def set_square(self, file, rank, piece):
+        num_rank = ranks[rank]
+        num_file = files[file]
+        self.board[num_rank][num_file] = piece
     
     def deepcopy(self):
         copy = ChessGame()
-        for rank in range(8):
-            for file in range(8):
-                target_piece = self.board[rank][file]
-                if target_piece: copy.board[rank][file] = target_piece.deepcopy()
-                else: copy.board[rank][file] = None
+        for rank in ranks.keys():
+            for file in files.keys():
+                target_piece = self.piece_at(file, rank)
+                if target_piece: copy.set_square(file, rank, target_piece.deepcopy())
+                else: copy.set_square(file, rank, None)
         return copy
 
     def dev_str(self):
         retval = ""
-        for rank in reversed(range(8)):
-            retval += str(rank + 1); retval += " "*2
-            for file in range(8):
-                piece = self.board[rank][file]
+        for rank in reversed(ranks.keys()):
+            retval += str(rank); retval += " "*2
+            for file in files:
+                piece = self.piece_at(file, rank)
                 if piece: 
                     retval += "{}{:1}{}{}".format(piece.color[0].upper(), piece.symbol, piece.file, piece.rank)
                     retval += " "*5

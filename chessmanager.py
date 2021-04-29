@@ -177,17 +177,15 @@ class ChessManager:
             piece.moved = True
         
     
-    def default_cycle(self, game, piece_to_move, rank_modif, file_modif, rank_limit_upper, 
-                        rank_limit_lower, file_limit_upper, file_limit_lower, valid_moves):
-        rev = list(files.keys())
-    
+    def default_cycle(self, game, piece_to_move, rank_modif, file_modif, rank_limit_upper, rank_limit_lower, file_limit_upper, file_limit_lower, valid_moves):
         rank = piece_to_move.rank
         file = piece_to_move.file
         
         def limit_obeyed(modif, upper_limit, lower_limit, val):
-            if (val <= lower_limit and modif < 0): return False
-            elif (val >= upper_limit and modif > 0): return False
-            else: return True
+            future_val = val + modif
+            if (future_val < lower_limit): return False
+            if (future_val > upper_limit): return False
+            return True
         
         rank_limit_obeyed = limit_obeyed(rank_modif, rank_limit_upper, rank_limit_lower, rank)
         file_limit_obeyed = limit_obeyed(file_modif, file_limit_upper, file_limit_lower, convert_file_to_num(file))
@@ -211,23 +209,16 @@ class ChessManager:
     def return_king_moves(self, game, king):
         valid_moves = []
                 
-        rank_limit_upper = king.rank + 1
-        if king.rank + 1 > 8: rank_limit_upper = 8
-        
-        rank_limit_lower = king.rank - 1
-        if king.rank - 1 < 1: rank_limit_lower = 1
-        
-        file_limit_upper = files[king.file] + 1 + 1
-        if files[king.file] + 1 + 1 > 8: file_limit_upper = 8 
-        
-        file_limit_lower = files[king.file] + 1 - 1
-        if files[king.file] + 1 - 1 < 1: rank_limit = 1
+        rank_limit_upper = king.rank + 1 if king.rank + 1 <= 8 else 8
+        rank_limit_lower = king.rank - 1 if king.rank - 1 >= 1 else 1
+        file_limit_upper = convert_file_to_num(king.file) + 1 if convert_file_to_num(king.file) + 1 <= 8 else 8 
+        file_limit_lower = convert_file_to_num(king.file) - 1 if convert_file_to_num(king.file) - 1 >= 1 else 8
         
         straight_moves = self.return_rook_moves(game, king, rank_limit_upper, rank_limit_lower, file_limit_upper, file_limit_lower)
         diagonal_moves = self.return_bishop_moves(game, king, rank_limit_upper, rank_limit_lower, file_limit_upper, file_limit_lower)        
         
         valid_moves = straight_moves + diagonal_moves                   
-        
+   
         return valid_moves
     
     def return_queen_moves(self, game, queen):
@@ -262,8 +253,7 @@ class ChessManager:
         return valid_moves
     
     def return_knight_moves(self, game, knight):
-        '''
-        
+        '''        
           -21012+
          2 #X#X#
          1 X###X
@@ -273,41 +263,22 @@ class ChessManager:
         
           (x , y)
         [ (-2, 1), (-2, -1), (2, 1), (2, -1) ],
-        [ (-1, 2), (-1, -2), (1, 2), (1, -2) ]
-        
+        [ (-1, 2), (-1, -2), (1, 2), (1, -2) ]        
         '''
+        rank_limit_upper = knight.rank + 2 if knight.rank <= 6 else 8
+        rank_limit_lower = knight.rank - 2 if knight.rank >= 3 else 3    
+        file_limit_upper = convert_file_to_num(knight.file) + 2 if convert_file_to_num(knight.file) <= 6 else 8
+        file_limit_lower = convert_file_to_num(knight.file) - 2 if convert_file_to_num(knight.file) <= 3 else 3
     
         valid_moves = []
         
-        # a: 0, b: 1, c: 2 ... h: 7
-        rev = list(files.keys())
+        modif_pairs = [
+                        {'rank': -2, 'file': 1}, {'rank': -2, 'file': -1}, {'rank': 2, 'file': 1}, {'rank': 2, 'file': -1},
+                        {'rank': -1, 'file': 2}, {'rank': -1, 'file': -2}, {'rank': 1, 'file': 2}, {'rank': 1, 'file': -2}
+                      ]
         
-        rank_modif = [-2, -1, 1, 2]
-        file_modif = [-2, -1, 1, 2]
-        
-        if(knight.rank < 3): rank_modif.remove(-2)
-        if(knight.rank < 2): rank_modif.remove(-1)
-        if(knight.rank > 6): rank_modif.remove(2)
-        if(knight.rank > 7): rank_modif.remove(1)
-        
-        knight_num_file = files[knight.file] + 1
-        if(knight_num_file < 3): file_modif.remove(-2)
-        if(knight_num_file < 2): file_modif.remove(-1)
-        if(knight_num_file > 6): file_modif.remove(2)
-        if(knight_num_file > 7): file_modif.remove(1)
-        
-        for rm in rank_modif:
-            for fm in file_modif:
-                if abs(rm) == abs(fm): continue 
-            
-                new_rank = knight.rank + rm
-                new_file = rev[knight_num_file - 1 + fm]
-                
-                piece = game.board[ (ranks[new_rank]) ][ (files[new_file]) ]
-                if piece and piece.color == knight.color: continue
-                
-                new_move = { 'rank': new_rank, 'file': new_file }
-                valid_moves.append(new_move)
+        for pair in modif_pairs:
+            self.default_cycle(game, knight, pair['rank'], pair['file'], rank_limit_upper, rank_limit_lower, file_limit_upper, file_limit_lower, valid_moves)
         
         return valid_moves
             

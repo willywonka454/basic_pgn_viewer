@@ -306,25 +306,20 @@ class ChessManager:
     def return_pawn_moves(self, game, pawn):
         valid_moves = []
         
-        rank_modif = 1
-        if pawn.color == "white": rank_modif = 1
-        if pawn.color == "black": rank_modif = -1
+        rank_modif = 1 if pawn.color == "white" else -1
         
         if (pawn.rank <= 7 and pawn.color == "white") or (pawn.rank >= 2 and pawn.color == "black"):
-            new_rank = pawn.rank + rank_modif
-            new_file = files[pawn.file]
-            piece = game.board[ranks[new_rank]][new_file]
+            piece = game.piece_at(pawn.file, pawn.rank + rank_modif)
             if not piece:
-                new_move = { 'rank': new_rank, 'file': pawn.file }
+                new_move = { 'rank': pawn.rank + rank_modif, 'file': pawn.file }
                 valid_moves.append(new_move)
-                if pawn.moved == False:
-                    new_rank = pawn.rank + (rank_modif * 2)
-                    new_file = files[pawn.file]
-                    piece = game.board[ranks[new_rank]][new_file]
-                    if not piece:
-                        new_move = { 'rank': new_rank, 'file': pawn.file }
-                        valid_moves.append(new_move)
                 
+        if pawn.moved == False:
+            piece = game.piece_at(pawn.file, pawn.rank + (rank_modif * 2))
+            if not piece:
+                new_move = { 'rank': pawn.rank + (rank_modif * 2), 'file': pawn.file }
+                valid_moves.append(new_move)
+        
         rev = list(files.keys())
         pawn_num_file = files[pawn.file]
         file_modif = [1, -1]
@@ -334,9 +329,9 @@ class ChessManager:
             if pawn_num_file >= 7: file_modif.remove(1)
             for fm in file_modif:
                 new_rank = pawn.rank + rank_modif
-                new_file = rev[pawn_num_file + fm]
+                new_file = file_add(pawn.file, fm)
                 
-                piece = game.board[ (ranks[new_rank]) ][ (files[new_file]) ]
+                piece = game.piece_at(new_file, new_rank)
                 if not piece:
                     if not self.en_passant(game, new_rank, new_file, pawn): continue
                 if piece and piece.color == pawn.color: continue

@@ -347,15 +347,15 @@ class ChessManager:
         
         if pawn.color == "white":
             if pawn.rank != 5 and target_rank != 6: return False
-            if not two_states_ago.board[ ranks[7] ][ (files[target_file]) ]: return False
-            if one_states_ago.board[ ranks[7] ][ (files[target_file]) ]: return False
-            if not curr_state.board[ ranks[5] ][ (files[target_file]) ]: return False
-            curr_state.board[ ranks[5] ][ (files[target_file]) ] = None
+            if not two_states_ago.piece_at(target_file, 7): return False
+            if one_states_ago.piece_at(target_file, 7): return False
+            if not curr_state.piece_at(target_file, 5): return False
+            curr_state.set_square(target_file, 5, None)
         else:
             if pawn.rank != 4 and target_rank != 3: return False
-            if not two_states_ago.board[ ranks[2] ][ (files[target_file]) ]: return False
-            if one_states_ago.board[ ranks[2] ][ (files[target_file]) ]: return False
-            if not curr_state.board[ ranks[4] ][ (files[target_file]) ]: return False
-            curr_state.board[ ranks[4] ][ (files[target_file]) ] = None
+            if not two_states_ago.piece_at(target_file, 2): return False
+            if one_states_ago.piece_at(target_file, 2): return False
+            if not curr_state.piece_at(target_file, 4): return False
+            curr_state.set_square(target_file, 4, None)
             
         return True
